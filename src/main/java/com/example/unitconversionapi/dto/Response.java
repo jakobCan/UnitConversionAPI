@@ -1,2 +1,24 @@
-package com.example.unitconversionapi.dto;public class Response {
+package com.example.unitconversionapi.dto;
+
+public class Response {
+    private float result;
+
+    public Response(float result) {
+        this.result = result;
+    }
+
+    public float getResult() {
+        return result;
+    }
+
+    public void setResult(float result) {
+        this.result = result;
+    }
+
+    @Override
+    public String toString() {
+        return "Response{" +
+                "result=" + result +
+                '}';
+    }
 }
