@@ -1,5 +1,6 @@
 package com.example.unitconversionapi.conversion;
 
+import com.example.unitconversionapi.dto.Request;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
