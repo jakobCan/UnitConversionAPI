@@ -25,6 +25,8 @@ public class ConversionService {
     }
 
     public float convert(Request request){
-        return 0.0f;
+        return conversionStrategyMap
+                .get(request.getConversionCode())
+                .convert(request.getFromValue());
     }
 }

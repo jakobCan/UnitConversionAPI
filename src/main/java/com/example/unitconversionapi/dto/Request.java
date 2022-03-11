@@ -33,6 +33,10 @@ public class Request {
         return toType;
     }
 
+    public String getConversionCode(){
+        return fromType + toType;
+    }
+
     public void setToType(String toType) {
         this.toType = toType;
     }
