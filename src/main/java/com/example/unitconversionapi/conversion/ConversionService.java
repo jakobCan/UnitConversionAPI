@@ -1,7 +1,9 @@
 package com.example.unitconversionapi.conversion;
 
 import com.example.unitconversionapi.dto.Request;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Map;
@@ -24,7 +26,15 @@ public class ConversionService {
                 .collect(Collectors.toMap(ConversionStrategy::getConversionCode, Function.identity()));
     }
 
-    public float convert(Request request){
-        return 0.0f;
+    public float convert(Request request) throws ResponseStatusException{
+
+        String requestCode = request.getConversionCode();
+        if (!conversionStrategyMap.containsKey(requestCode)){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "toType or fromType is incorrect.");
+        }
+
+        return conversionStrategyMap
+                .get(request.getConversionCode())
+                .convert(request.getFromValue());
     }
 }
